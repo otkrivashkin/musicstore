@@ -13,6 +13,7 @@ public class ProductDao {
 	public List<Product> getProductList() {
 
 		Product product1 = new Product();
+		product1.setId("one");
 		product1.setName("Guitart1");
 		product1.setCategory("Instrument");
 		product1.setDescription("This is a fender strat guitar!");
@@ -23,6 +24,7 @@ public class ProductDao {
 		product1.setManufacturer("Fender");
 		
 		Product product2 = new Product();
+		product1.setId("two");
 		product2.setName("Guitart1");
 		product2.setCategory("Instrument");
 		product2.setDescription("This is a fender strat guitar!");
@@ -33,6 +35,7 @@ public class ProductDao {
 		product2.setManufacturer("Fender");
 		
 		Product product3 = new Product();
+		product1.setId("three");
 		product3.setName("Guitart1");
 		product3.setCategory("Instrument");
 		product3.setDescription("This is a fender strat guitar!");

@@ -16,11 +16,11 @@
 				</div>
 				<div class="col-md-5">
 					<h3>Product Name ${product.name }</h3>
-					<p>Product Description ${product.description }</p>
-					<p>Manufacturer ${product.manufacturer }</p>
-					<p>Category ${product.category }</p>
-					<p>Condition ${product.condition }</p>
-					<p>Price ${product.price }</p>
+					<p><strong>Product Description</strong> ${product.description }</p>
+					<p><strong>Manufacturer</strong> ${product.manufacturer }</p>
+					<p><strong>Category</strong> ${product.category }</p>
+					<p><strong>Condition</strong> ${product.condition }</p>
+					<p><strong>Price</strong> ${product.price }</p>
 				</div>
 			</div>
 		</div>
