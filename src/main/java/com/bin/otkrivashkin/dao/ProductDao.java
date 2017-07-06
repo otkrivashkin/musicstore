@@ -1,5 +1,6 @@
 package com.bin.otkrivashkin.dao;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,15 @@ public class ProductDao {
 		productList.add(product3);
 
 		return productList;
+	}
+	
+	public Product getProductById(String id) throws IOException{
+		for (Product product: getProductList()) {
+			if (product.getId().equals(id)) {
+				return product;
+			}
+		}
+		throw new IOException("No product found.");
 	}
 
 }

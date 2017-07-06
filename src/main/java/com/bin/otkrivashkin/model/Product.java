@@ -2,6 +2,7 @@ package com.bin.otkrivashkin.model;
 
 public class Product {
 	
+	private String id;
 	private String name;
 	private String category;
 	private String description;
@@ -11,6 +12,12 @@ public class Product {
 	private int unitInStock;
 	private String manufacturer;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

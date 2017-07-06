@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/view/template/header.jsp"%>
 
 <div class="container-wrapper">
@@ -25,7 +26,12 @@
 					<td>${product.name}</td>
 					<td>${product.category}</td>
 					<td>${product.condition}</td>
-					<td>${product.price}USD</td>
+					<td>${product.price} USD</td>
+					<td>
+						<a href="<spring:url value="/productList/viewProduct/${product.id}" />">
+							<span class="glyphicon glyphicon-info-sign"></span>
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
