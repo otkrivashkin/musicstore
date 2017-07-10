@@ -5,12 +5,12 @@ import java.util.List;
 import com.bin.otkrivashkin.model.Product;
 
 public interface ProductDao {
-	
+
 	void addProduct(Product product);
-	
-	Product getProductById(String id);
-	
+
+	Product getProductById(long id);
+
 	List<Product> getAllProducts();
-	
-	void deleteProduct(String id);
+
+	void deleteProduct(long id);
 }
