@@ -2,6 +2,7 @@ package com.bin.otkrivashkin.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,8 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.getCurrentSession();
-//		Query query = session.createQuery("from product");
-//		List<Product> products = query.list();
-		@SuppressWarnings("unchecked")
-		List<Product> products = session.createSQLQuery("SELECT * FROM Product").addEntity(Product.class).list();
+		Query query = session.createQuery("from Product");
+		List<Product> products = query.list();
 		session.flush();
 		return products;
 	}
