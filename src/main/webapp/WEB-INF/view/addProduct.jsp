@@ -16,6 +16,16 @@
 				<label for="name">Name</label>
 				<form:input path="name" id="name" class="form-control"/>
 			</div> 
+			<div class="form-group">
+				<label for="category">Category</label>
+				<form:input path="category" id="category" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="category">Category</label>
+				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="instrument"/>Instrument</label>
+				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="record"/>Record</label>
+				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="accessory"/>Accessory</label>
+			</div>
 		</form:form>
 
 		<!-- FOOTER -->
