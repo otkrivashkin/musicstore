@@ -29,14 +29,17 @@ public class ProductDaoImpl implements ProductDao {
 		Session session = sessionFactory.getCurrentSession();
 		Product product = (Product) session.get(Product.class, id);
 		session.flush();
+		
 		return product;
 	}
 
 	@Override
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.getCurrentSession();
+//		Query query = session.createQuery("from product");
+//		List<Product> products = query.list();
 		@SuppressWarnings("unchecked")
-		List<Product> products = (List<Product>) session.createQuery("from Product").list();
+		List<Product> products = session.createSQLQuery("SELECT * FROM Product").addEntity(Product.class).list();
 		session.flush();
 		return products;
 	}
