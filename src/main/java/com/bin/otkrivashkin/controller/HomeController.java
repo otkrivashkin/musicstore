@@ -80,7 +80,7 @@ public class HomeController {
         MultipartFile image = product.getImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
-
+        
         if (image != null && !image.isEmpty()) {
             try {
             	image.transferTo(new File(path.toString()));
