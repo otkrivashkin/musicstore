@@ -17,15 +17,10 @@
 				<label for="name">Name</label>
 				<form:input path="name" id="name" class="form-control"/>
 			</div> 
-			
+					
 			<div class="form-group">
 				<label for="category">Category</label>
-				<form:input path="category" id="category" class="form-control"/>
-			</div>
-			
-			<div class="form-group">
-				<label for="category">Category</label>
-				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="instrument"/>Instrument</label>
+				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="instrument" checked = "checked"/>Instrument</label>
 				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="record"/>Record</label>
 				<label class="checkbox-inline"><form:radiobutton path="category" id="category" value="accessory"/>Accessory</label>
 			</div>
@@ -42,13 +37,13 @@
 			
 			<div class="form-group">
 				<label for="condition">Condition</label>
-				<label class="checkbox-inline"><form:radiobutton path="condition" id="condition" value="new"/>New</label>
+				<label class="checkbox-inline"><form:radiobutton path="condition" id="condition" value="new" checked = "checked"/>New</label>
 				<label class="checkbox-inline"><form:radiobutton path="condition" id="condition" value="used"/>Used</label>				
 			</div>
 			
 			<div class="form-group">
 				<label for="status">Status</label>
-				<label class="checkbox-inline"><form:radiobutton path="status" id="status" value="active"/>Active</label>
+				<label class="checkbox-inline"><form:radiobutton path="status" id="status" value="active" checked = "checked"/>Active</label>
 				<label class="checkbox-inline"><form:radiobutton path="status" id="status" value="inactive"/>Inactive</label>
 			</div>
 			
