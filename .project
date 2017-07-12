@@ -44,7 +44,7 @@
 		<link>
 			<name>resources</name>
 			<type>2</type>
-			<location>D:/Workplace/musicstore/src/main/webapp/WEB-INF/resources</location>
+			<location>D:/Eclipse/Workspace/musicstore/src/main/webapp/WEB-INF/resources</location>
 		</link>
 	</linkedResources>
 </projectDescription>

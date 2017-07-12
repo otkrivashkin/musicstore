@@ -74,13 +74,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
-    public String addProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {
+    public String addProduct(@ModelAttribute("product") Product product, HttpServletRequest request) {
         productDao.addProduct(product);
 
         MultipartFile image = product.getImage();
+        String dir = System.getProperty("catalina.home");
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootDirectory + "//WEB-INF//resources//images//" + product.getId() + ".png");
-        System.out.println("Path of this shit ->>>>" + path);
+        System.out.println("Pasdasath of this shit ->>>>" + dir);
         if (image != null && !image.isEmpty()) {
             try {
             	image.transferTo(new File(path.toString()));
