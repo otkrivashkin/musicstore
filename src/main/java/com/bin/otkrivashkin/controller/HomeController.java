@@ -1,7 +1,12 @@
 package com.bin.otkrivashkin.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bin.otkrivashkin.dao.ProductDao;
 import com.bin.otkrivashkin.model.Product;
@@ -17,6 +23,8 @@ import com.bin.otkrivashkin.model.Product;
 @Controller
 public class HomeController {
 
+	private Path path;
+	
 	@Autowired
 	private ProductDao productDao;
 
@@ -66,11 +74,24 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
-	public String addProduct(@ModelAttribute("product") Product product) {
-		productDao.addProduct(product);
-		
-		return "redirect:/admin/productInventory";
-	}
+    public String addProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {
+        productDao.addProduct(product);
+
+        MultipartFile image = product.getImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
+
+        if (image != null && !image.isEmpty()) {
+            try {
+            	image.transferTo(new File(path.toString()));
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("Product image saving failed", e);
+            }
+        }
+
+        return "redirect:/admin/productInventory";
+    }
 	
 	@RequestMapping("/admin/productInventory/deleteProduct/{id}")
 	public String deleteProduct(@PathVariable long id, Model model) {
