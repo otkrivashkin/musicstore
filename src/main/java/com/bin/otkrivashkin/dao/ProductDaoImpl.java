@@ -45,7 +45,6 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Product");
-		@SuppressWarnings("unchecked")
 		List<Product> products = query.list();
 		session.flush();
 		return products;
