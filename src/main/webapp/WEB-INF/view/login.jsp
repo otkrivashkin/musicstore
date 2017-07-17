@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/view/template/header.jsp"%>
+<%@include file="template/header.jsp"%>
 
 
     <div class="container-wrapper">
@@ -6,6 +6,14 @@
             <div id="login-box">
 
                 <h2>Login with Username and Passoword</h2>
+
+                <c:if test="${not empty msg}">
+                    <div class="msg">${msg}</div>
+                </c:if>
+
+                <c:if test="${not empty error}">
+                    <div class="error has-error">${error}</div>
+                </c:if>
 
                 <form name="loginForm" action="<c:url value="/j_spring_security_check"/>" method="post">
                     <div class="form-group">
@@ -25,6 +33,5 @@
             </div>
         </div>
     </div>
-
 
 <%@include file="template/footer.jsp"%>
