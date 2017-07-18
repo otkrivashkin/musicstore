@@ -13,7 +13,7 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error,
-                        @RequestParam(value = "msg", required = false) String msg,
+                        @RequestParam(value = "logout", required = false) String msg,
                         Model model) {
 
         if (error != null) {
@@ -23,8 +23,6 @@ public class LoginController {
         if (msg != null) {
             model.addAttribute("msg", "You have been logged out successfully!");
         }
-
-
 
         return "login";
     }
