@@ -1,7 +1,8 @@
-package com.bin.otkrivashkin.dao;
+package com.bin.otkrivashkin.dao.impl;
 
 import java.util.List;
 
+import com.bin.otkrivashkin.dao.ProductDao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

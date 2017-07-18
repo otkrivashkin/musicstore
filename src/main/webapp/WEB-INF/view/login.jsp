@@ -34,5 +34,7 @@
             </div>
         </div>
     </div>
+<div class="container">
+    <%@include file="template/footer.jsp"%>
+</div>
 
-<%@include file="template/footer.jsp"%>
