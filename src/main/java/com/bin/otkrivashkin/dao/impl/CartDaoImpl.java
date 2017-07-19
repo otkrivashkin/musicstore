@@ -2,6 +2,7 @@ package com.bin.otkrivashkin.dao.impl;
 
 import com.bin.otkrivashkin.dao.CartDao;
 import com.bin.otkrivashkin.model.Cart;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 /**
  * Created by otkrivashkin on 18.07.2017.
  */
+@Repository
 public class CartDaoImpl implements CartDao {
 
     private Map<String, Cart> listOfCarts;
