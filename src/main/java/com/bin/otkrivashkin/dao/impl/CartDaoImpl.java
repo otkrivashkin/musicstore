@@ -46,7 +46,7 @@ public class CartDaoImpl implements CartDao {
     @Override
     public void delete(String cartId) {
         if (!listOfCarts.keySet().contains(cartId)) {
-            throw new IllegalArgumentException(String.format("Cannot delete a cart with id (%)", cartId));
+            throw new IllegalArgumentException(String.format("Cannot delete a cart with id (%), it does not exist.", cartId));
         }
         listOfCarts.remove(cartId);
     }
