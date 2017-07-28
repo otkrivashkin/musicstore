@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by otkrivashkin on 19.07.2017.
- */
 @Controller
 @RequestMapping("/cart")
 public class CartItemController {

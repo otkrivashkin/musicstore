@@ -25,6 +25,8 @@
 			<version>4.0.6.RELEASE</version>
 		</dependency>
 
+
+
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -93,10 +95,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>4.0.3.RELEASE</version>
-		</dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>4.0.3.RELEASE</version>
+	</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -115,6 +117,8 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>3.1.4.RELEASE</version>
 		</dependency>
+
+		<!-- Convert in json -->
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

@@ -65,10 +65,8 @@ public class AdminController {
         productDao.addProduct(product);
 
         MultipartFile image = product.getImage();
-        String dir = System.getProperty("catalina.home");
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
-        System.out.println("Pasdasath of this shit ->>>>" + dir);
         if (image != null && !image.isEmpty()) {
             try {
                 image.transferTo(new File(path.toString()));
@@ -82,7 +80,7 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/productInventory/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable long id, Model model, HttpServletRequest request) {
+    public String deleteProduct(@PathVariable String id, Model model, HttpServletRequest request) {
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + id + ".png");
@@ -101,7 +99,7 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/productInventory/editProduct/{id}")
-    public String editProduct(@PathVariable("id") long id, Model model) {
+    public String editProduct(@PathVariable("id") String id, Model model) {
         Product product = productDao.getProductById(id);
 
         model.addAttribute(product);
