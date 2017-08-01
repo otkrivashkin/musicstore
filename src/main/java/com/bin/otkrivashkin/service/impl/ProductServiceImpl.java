@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductList() {
-        return null;
+        return productDao.getProductList();
     }
 
     @Override
@@ -26,16 +26,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-
+        productDao.addProduct(product);
     }
 
     @Override
     public void editProduct(Product product) {
-
+        productDao.editProduct(product);
     }
 
     @Override
     public void deleteProduct(Product product) {
-
+        productDao.deleteProduct(product);
     }
 }
