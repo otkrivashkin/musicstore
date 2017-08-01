@@ -1,8 +1,8 @@
 
 
-var carApp = angular.module("cartApp", []);
+var cartApp = angular.module("cartApp", []);
 
-carApp.controller("cartCtrl", function ($scope, $http) {
+cartApp.controller("cartCtrl", function ($scope, $http) {
 
     $scope.refreshCart = function (cartId) {
         $http.get('/musicstore/rest/cart/' + $scope.cartId).success(function (data) {

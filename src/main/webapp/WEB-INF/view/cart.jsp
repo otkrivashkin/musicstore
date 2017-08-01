@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="template/header.jsp" %>
 
-
 <div class="container-wrapper">
     <div class="container">
         <section>

@@ -1,8 +1,5 @@
 package com.bin.otkrivashkin.model;
 
-/**
- * Created by otkrivashkin on 18.07.2017.
- */
 public class CartItem {
 
     private Product product;
