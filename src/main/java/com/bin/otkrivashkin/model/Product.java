@@ -3,12 +3,18 @@ package com.bin.otkrivashkin.model;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 336604787625945685L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +35,9 @@ public class Product {
 	private String manufacturer;
 	@Transient
 	private MultipartFile image;
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<CartItem> cartItemList;
 	
 	public String getId() {
 		return id;
@@ -109,7 +118,12 @@ public class Product {
 	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
-	
-	
 
+	public List<CartItem> getCartItemList() {
+		return cartItemList;
+	}
+
+	public void setCartItemList(List<CartItem> cartItemList) {
+		this.cartItemList = cartItemList;
+	}
 }
