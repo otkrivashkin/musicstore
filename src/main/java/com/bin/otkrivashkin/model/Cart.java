@@ -3,9 +3,7 @@ package com.bin.otkrivashkin.model;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by otkrivashkin on 18.07.2017.
- */
+
 public class Cart {
 
     private String id;
