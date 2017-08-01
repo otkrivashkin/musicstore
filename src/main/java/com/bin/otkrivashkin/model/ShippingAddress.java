@@ -3,10 +3,6 @@ package com.bin.otkrivashkin.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by otkrivashkin on 01.08.2017.
- */
-
 @Entity
 public class ShippingAddress implements Serializable {
 
