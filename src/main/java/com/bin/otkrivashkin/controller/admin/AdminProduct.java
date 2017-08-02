@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.SimpleTimeZone;
@@ -82,8 +84,8 @@ public class AdminProduct {
 
     @RequestMapping(value = "/product/editProduct", method = RequestMethod.POST)
     public String editProduct(@Valid @ModelAttribute("product") Product product,
-                             BindingResult result,
-                             HttpServletRequest request) {
+                              BindingResult result,
+                              HttpServletRequest request) {
 
         if (result.hasErrors()) {
             return "editProduct";
@@ -107,4 +109,25 @@ public class AdminProduct {
         return "redirect:/admin/productInventory";
 
     }
+
+    @RequestMapping(value = "/product/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable("id") int id, HttpServletRequest request) {
+
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + id + ".png");
+
+        if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        Product product = productService.getProductById(id);
+        productService.deleteProduct(product);
+
+        return "redirect:/admin/productInventory";
+    }
+
 }
