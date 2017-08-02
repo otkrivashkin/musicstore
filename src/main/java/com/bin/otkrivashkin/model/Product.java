@@ -18,7 +18,7 @@ public class Product implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private int id;
 
 	@NotEmpty(message = "The product name must not be empty.")
 	private String name;
@@ -40,11 +40,11 @@ public class Product implements Serializable {
     @JsonIgnore
 	private List<CartItem> cartItemList;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

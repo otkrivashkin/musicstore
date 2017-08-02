@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.SimpleTimeZone;
 
 /**
  * Created by otkrivashkin on 02.08.2017.
@@ -64,6 +66,43 @@ public class AdminProduct {
                 throw new RuntimeException("Product image saving failed.");
             }
         }
+
+        return "redirect:/admin/productInventory";
+
+    }
+
+    @RequestMapping("/product/editProduct/{id}")
+    public String editProduct(@PathVariable("id") int id, Model model) {
+        Product product = productService.getProductById(id);
+
+        model.addAttribute("product", product);
+
+        return "editProduct";
+    }
+
+    @RequestMapping(value = "/product/editProduct", method = RequestMethod.POST)
+    public String editProduct(@Valid @ModelAttribute("product") Product product,
+                             BindingResult result,
+                             HttpServletRequest request) {
+
+        if (result.hasErrors()) {
+            return "editProduct";
+        }
+
+        MultipartFile image = product.getImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
+
+        if (image != null && !image.isEmpty()) {
+            try {
+                image.transferTo(new File(path.toString()));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException("Product image saving failed.");
+            }
+        }
+
+        productService.editProduct(product);
 
         return "redirect:/admin/productInventory";
 

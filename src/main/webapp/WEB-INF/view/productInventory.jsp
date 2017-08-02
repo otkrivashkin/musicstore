@@ -35,15 +35,15 @@
 					<td>${product.price} USD</td>
 					<td>
 						<!-- view product -->
-						<a href="<spring:url value="/productList/viewProduct/${product.id}" />">
+						<a href="<spring:url value="/product/viewProduct/${product.id}" />">
 							<span class="glyphicon glyphicon-info-sign"></span>
 						</a>
 						<!-- delete product -->
-						<a href="<spring:url value="/admin/productInventory/deleteProduct/${product.id}" />">
+						<a href="<spring:url value="/admin/product/deleteProduct/${product.id}" />">
 							<span class="glyphicon glyphicon-remove"></span>
 						</a>
 						<%-- edit product --%>
-						<a href="<spring:url value="/admin/productInventory/editProduct/${product.id}" />">
+						<a href="<spring:url value="/admin/product/editProduct/${product.id}" />">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
 					</td>
