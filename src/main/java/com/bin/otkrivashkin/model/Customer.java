@@ -33,7 +33,7 @@ public class Customer implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "billingAddressId")
-    private BillingAddress billingAddres;
+    private BillingAddress billingAddress;
 
     @OneToOne
     @JoinColumn(name = "shippingAddressId")
@@ -100,12 +100,12 @@ public class Customer implements Serializable {
         this.enabled = enabled;
     }
 
-    public BillingAddress getBillingAddres() {
-        return billingAddres;
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
     }
 
-    public void setBillingAddres(BillingAddress billingAddres) {
-        this.billingAddres = billingAddres;
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     public ShippingAddress getShippingAddress() {
