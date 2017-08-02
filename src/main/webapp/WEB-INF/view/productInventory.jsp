@@ -51,7 +51,7 @@
 			</c:forEach>
 		</table>
 		
-		<a class="btn btn-primary" href="<spring:url value="/admin/productInventory/addProduct"/>">Add Product</a>
+		<a class="btn btn-primary" href="<spring:url value="/admin/product/addProduct"/>">Add Product</a>
 		
 		<!-- FOOTER -->
 		<%@include file="/WEB-INF/view/template/footer.jsp"%>

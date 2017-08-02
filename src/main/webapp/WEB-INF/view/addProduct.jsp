@@ -11,7 +11,7 @@
 		
 		<!-- ADD PRODUCT FORM -->
 
-		<form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct"
+		<form:form action="${pageContext.request.contextPath}/admin/product/addProduct"
 		 method="post" commandName="product" 
 		 enctype="multipart/form-data">
 		
