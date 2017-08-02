@@ -1,5 +1,6 @@
 package com.bin.otkrivashkin.service;
 
+import com.bin.otkrivashkin.model.Cart;
 import com.bin.otkrivashkin.model.CartItem;
 
 /**
@@ -11,5 +12,5 @@ public interface CartItemService {
 
     void removeCartItem(CartItem cartItem);
 
-    void removeAllCartItems();
+    void removeAllCartItems(Cart cart);
 }
