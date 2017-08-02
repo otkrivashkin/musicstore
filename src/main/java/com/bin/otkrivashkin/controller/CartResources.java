@@ -4,6 +4,7 @@ import com.bin.otkrivashkin.model.Cart;
 import com.bin.otkrivashkin.model.CartItem;
 import com.bin.otkrivashkin.model.Customer;
 import com.bin.otkrivashkin.model.Product;
+import com.bin.otkrivashkin.service.CartItemService;
 import com.bin.otkrivashkin.service.CartService;
 import com.bin.otkrivashkin.service.CustomerService;
 import com.bin.otkrivashkin.service.ProductService;
@@ -31,6 +32,9 @@ public class CartResources {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CartItemService cartItemService;
 
     @RequestMapping("/{cartId}")
     public @ResponseBody

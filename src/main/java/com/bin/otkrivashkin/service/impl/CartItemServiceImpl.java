@@ -1,5 +1,6 @@
 package com.bin.otkrivashkin.service.impl;
 
+import com.bin.otkrivashkin.dao.CartItemDao;
 import com.bin.otkrivashkin.model.Cart;
 import com.bin.otkrivashkin.model.CartItem;
 import com.bin.otkrivashkin.service.CartItemService;
