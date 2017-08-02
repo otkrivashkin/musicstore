@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-group">
-                <label for="userName">User Name</label><form:errors path="userName" cssStyle="color: darkred;"/>
+                <label for="userName">UserName</label><form:errors path="userName" cssStyle="color: darkred;"/>
                 <form:input path="userName" id="userName" class="form-control"/>
             </div>
 
