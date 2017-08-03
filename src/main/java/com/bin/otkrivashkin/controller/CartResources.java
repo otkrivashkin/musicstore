@@ -70,4 +70,12 @@ public class CartResources {
         cartItemService.addCartItem(cartItem);
 
     }
+
+    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeItem(@PathVariable int productId) {
+
+        CartItem cartItem = cartItemService.getCartItemByProductId(productId);
+        cartItemService.removeCartItem(cartItem);
+    }
 }

@@ -3,6 +3,7 @@ package com.bin.otkrivashkin.dao.impl;
 import com.bin.otkrivashkin.dao.CartItemDao;
 import com.bin.otkrivashkin.model.Cart;
 import com.bin.otkrivashkin.model.CartItem;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,15 @@ public class CartItemDaoImpl implements CartItemDao {
         for (CartItem item : cartItems) {
             removeCartItem(item);
         }
+    }
+
+    @Override
+    public CartItem getCartItemByProductId(int productId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from CartItem where productId = ?");
+        query.setInteger(0, productId);
+        session.flush();
+
+        return (CartItem) query.uniqueResult();
     }
 }

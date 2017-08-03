@@ -30,4 +30,9 @@ public class CartItemServiceImpl implements CartItemService {
     public void removeAllCartItems(Cart cart) {
         cartItemDao.removeAllCartItems(cart);
     }
+
+    @Override
+    public CartItem getCartItemByProductId(int productId) {
+        return cartItemDao.getCartItemByProductId(productId);
+    }
 }
