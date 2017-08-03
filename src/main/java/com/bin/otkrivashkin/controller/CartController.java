@@ -1,92 +1,38 @@
 package com.bin.otkrivashkin.controller;
 
-import com.bin.otkrivashkin.dao.CartDao;
-import com.bin.otkrivashkin.dao.ProductDao;
-import com.bin.otkrivashkin.model.Cart;
-import com.bin.otkrivashkin.model.CartItem;
-import com.bin.otkrivashkin.model.Product;
+import com.bin.otkrivashkin.model.Customer;
+import com.bin.otkrivashkin.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
+/**
+ * Created by otkrivashkin on 02.08.2017.
+ */
 @Controller
-@RequestMapping("/rest/cart")
+@RequestMapping("/customer/cart")
 public class CartController {
 
     @Autowired
-    private CartDao cartDao;
+    private CustomerService customerService;
 
-    @Autowired
-    private ProductDao productDao;
+    @RequestMapping
+    public String getCart(@AuthenticationPrincipal User activeUser) {
+        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
 
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
-    public @ResponseBody
-    Cart read (@PathVariable(value = "cartId") String cartId) {
-        return cartDao.read(cartId);
+        int cartId = customer.getCart().getCartId();
+
+        return "redirect:/customer/cart/" + cartId;
     }
 
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.PUT)
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@PathVariable(value = "cartId") String cartId, @RequestBody Cart cart) {
-        cartDao.update(cartId, cart);
+    @RequestMapping("/{cartId}")
+    public String getCartRedirect(@PathVariable("cartId") int cartId, Model model) {
+        model.addAttribute("cartId", cartId);
+
+        return "cart";
     }
-
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable(value = "cartId") String cartId) {
-        cartDao.delete(cartId);
-    }
-
-    @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addItem(@PathVariable(value = "productId") String productId, HttpServletRequest request) {
-        String sessionId = request.getSession(true).getId();
-        Cart cart = cartDao.read(sessionId);
-
-        if (cart == null) {
-            cart = cartDao.create(new Cart(sessionId));
-        }
-
-        Product product = productDao.getProductById(productId);
-        if (product == null) {
-            throw new IllegalArgumentException(new Exception());
-        }
-
-        cart.addCartItem(new CartItem(product));
-
-        cartDao.update(sessionId, cart);
-    }
-
-    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void removeItem(@PathVariable String productId, HttpServletRequest request) {
-        String sessionId = request.getSession(true).getId();
-        Cart cart = cartDao.read(sessionId);
-
-        if (cart == null) {
-            cart = cartDao.create(new Cart(sessionId));
-        }
-
-        Product product = productDao.getProductById(productId);
-        if (product == null) {
-            throw new IllegalArgumentException(new Exception());
-        }
-
-        cart.removeCartItem(new CartItem(product));
-
-        cartDao.update(sessionId, cart);
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Illegal request, please verify your payload")
-    public void handleClientErrors(Exception e) {}
-
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal Server Error")
-    public void handleServerError(Exception e) {}
-
-
 }

@@ -1,21 +1,24 @@
 package com.bin.otkrivashkin.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
-public class Product {
+@Table(name = "products")
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 336604787625945685L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private int id;
 
 	@NotEmpty(message = "The product name must not be empty.")
 	private String name;
@@ -32,12 +35,16 @@ public class Product {
 	private String manufacturer;
 	@Transient
 	private MultipartFile image;
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+	private List<CartItem> cartItemList;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -112,7 +119,12 @@ public class Product {
 	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
-	
-	
 
+	public List<CartItem> getCartItemList() {
+		return cartItemList;
+	}
+
+	public void setCartItemList(List<CartItem> cartItemList) {
+		this.cartItemList = cartItemList;
+	}
 }

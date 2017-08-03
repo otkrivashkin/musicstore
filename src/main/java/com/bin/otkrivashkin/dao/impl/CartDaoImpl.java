@@ -2,51 +2,37 @@ package com.bin.otkrivashkin.dao.impl;
 
 import com.bin.otkrivashkin.dao.CartDao;
 import com.bin.otkrivashkin.model.Cart;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Created by otkrivashkin on 02.08.2017.
+ */
 @Repository
+@Transactional
 public class CartDaoImpl implements CartDao {
 
-    private Map<String, Cart> listOfCarts;
-
-    public CartDaoImpl() {
-        listOfCarts = new HashMap<String, Cart>();
-    }
-
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Override
-    public Cart create(Cart cart) {
-        if (listOfCarts.keySet().contains(cart.getId())) {
-            throw new IllegalArgumentException(String.format("Cannot create a cart. A cart with the given id (%) already exists", cart.getId()));
-        }
-
-        listOfCarts.put(cart.getId(), cart);
-
+    public Cart getCartById(int cartId) {
+        Session session = sessionFactory.getCurrentSession();
+        Cart cart = (Cart) session.get(Cart.class, cartId);
+        session.flush();
         return cart;
     }
 
     @Override
-    public Cart read(String cartId) {
-        return listOfCarts.get(cartId);
-    }
-
-    @Override
-    public void update(String cartId, Cart cart) {
-        if (!listOfCarts.keySet().contains(cartId)) {
-            throw new IllegalArgumentException(String.format("Cannot update a cart. A cart with the given id (%) does not exists", cart.getId()));
-        }
-
-        listOfCarts.put(cartId, cart);
-    }
-
-    @Override
-    public void delete(String cartId) {
-        if (!listOfCarts.keySet().contains(cartId)) {
-            throw new IllegalArgumentException(String.format("Cannot delete a cart with id (%), it does not exist.", cartId));
-        }
-        listOfCarts.remove(cartId);
+    public void update(Cart cart) {
+        int cartId = cart.getCartId();
+        // tod
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(cart);
+        session.flush();
     }
 }

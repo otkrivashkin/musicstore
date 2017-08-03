@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="template/header.jsp" %>
 
-
 <div class="container-wrapper">
     <div class="container">
         <section>
@@ -42,7 +41,7 @@
                         <th></th>
                         <th></th>
                         <th>Grand Total</th>
-                        <th>{{item.grandTotal}}</th>
+                        <th>{{calGrandTotal()}}</th>
                         <th></th>
                     </tr>
                 </table>
