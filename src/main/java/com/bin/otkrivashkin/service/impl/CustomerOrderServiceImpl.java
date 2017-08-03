@@ -28,6 +28,7 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
         customerOrderDao.addCustomerOrder(customerOrder);
     }
 
+    @Override
     public double getCustomerOrderGrandTotal(int cartId) {
         double grandTotal = 0;
         Cart cart = cartService.getCartById(cartId);
