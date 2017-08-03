@@ -5,13 +5,14 @@ import com.bin.otkrivashkin.model.Cart;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by otkrivashkin on 02.08.2017.
  */
-@ResponseBody
+@Repository
 @Transactional
 public class CartDaoImpl implements CartDao {
 
