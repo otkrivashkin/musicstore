@@ -1,5 +1,6 @@
 package com.bin.otkrivashkin.service.impl;
 
+import com.bin.otkrivashkin.dao.CustomerOrderDao;
 import com.bin.otkrivashkin.model.Cart;
 import com.bin.otkrivashkin.model.CartItem;
 import com.bin.otkrivashkin.model.CustomerOrder;
@@ -27,7 +28,6 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
         customerOrderDao.addCustomerOrder(customerOrder);
     }
 
-    @Override
     public double getCustomerOrderGrandTotal(int cartId) {
         double grandTotal = 0;
         Cart cart = cartService.getCartById(cartId);
