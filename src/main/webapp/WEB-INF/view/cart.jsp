@@ -7,7 +7,6 @@
             <div class="jumbotron">
                 <div class="container">
                     <h1>Cart</h1>
-
                     <p>All the selected products in your shopping cart</p>
                 </div>
             </div>
