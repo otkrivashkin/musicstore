@@ -38,7 +38,7 @@
 				<a href="#" class="btn btn-warning
 				btn-large" ng-click="addToCart('${product.id}')">
 				<span class="glyphicon glyphicon-shopping-cart"></span>Order Now</a>
-				<a href="<spring:url value="/cart"/> " class="btn btn-default"><span class="glyphicon glyphicon-hand-right"></span>View Cart</a>
+				<a href="<spring:url value="/customer/cart"/> " class="btn btn-default"><span class="glyphicon glyphicon-hand-right"></span>View Cart</a>
 			</p>
 		</div>
 		<script src="<c:url value="/resources/js/controller.js"/>"></script>
