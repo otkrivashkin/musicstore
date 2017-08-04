@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+
 /**
  * Created by otkrivashkin on 02.08.2017.
  */
@@ -34,5 +36,16 @@ public class CartDaoImpl implements CartDao {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(cart);
         session.flush();
+    }
+
+    @Override
+    public Cart validate(int cartId) throws IOException {
+        Cart cart = getCartById(cartId);
+        if (cart == null || cart.getCartItems().size() == 0) {
+            throw new IOException(cartId + "");
+        }
+        update(cart);
+
+        return cart;
     }
 }
