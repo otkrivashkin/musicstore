@@ -7,7 +7,6 @@
             <div class="jumbotron">
                 <div class="container">
                     <h1>Cart</h1>
-
                     <p>All the selected products in your shopping cart</p>
                 </div>
             </div>
@@ -46,7 +45,7 @@
                     </tr>
                 </table>
 
-                <a href="<spring:url value="/productList"/>" class="btn btn-default">Continue Shopping</a>
+                <a href="<spring:url value="/product/productList"/>" class="btn btn-default">Continue Shopping</a>
             </div>
         </section>
     </div>
