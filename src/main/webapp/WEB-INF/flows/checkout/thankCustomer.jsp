@@ -1,16 +1,25 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Note1
-  Date: 06.08.2017
-  Time: 14:11
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@include file="/WEB-INF/view/template/header.jsp" %>
 
-</body>
-</html>
+<div class="container-wrapper">
+    <div class="container">
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Thank you for your business!</h1>
+
+                    <p>Your order wll be shipped in two business days</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <p>
+                <a href="<spring:url value="/"/>" class="btn btn-default">OK</a>
+            </p>
+
+        </section>
+    </div>
+</div>
+
+<%@include file="/WEB-INF/view/template/footer.jsp" %>
