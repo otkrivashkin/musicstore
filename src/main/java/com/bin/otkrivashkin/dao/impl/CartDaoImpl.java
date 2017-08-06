@@ -2,6 +2,7 @@ package com.bin.otkrivashkin.dao.impl;
 
 import com.bin.otkrivashkin.dao.CartDao;
 import com.bin.otkrivashkin.model.Cart;
+import com.bin.otkrivashkin.service.CustomerOrderService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class CartDaoImpl implements CartDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private CustomerOrderService customerOrderService;
+
     @Override
     public Cart getCartById(int cartId) {
         Session session = sessionFactory.getCurrentSession();
@@ -32,7 +36,9 @@ public class CartDaoImpl implements CartDao {
     @Override
     public void update(Cart cart) {
         int cartId = cart.getCartId();
-        // tod
+        double grandTotal = customerOrderService.getCustomerOrderGrandTotal(cartId);
+        cart.setGrandTotal(grandTotal);
+
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(cart);
         session.flush();

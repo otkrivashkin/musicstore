@@ -12,12 +12,10 @@
                 </div>
             </div>
         </section>
-
         <section class="container">
             <p>
                 <a href="<spring:url value="/product/productList"/>" class="btn btn-default">Products</a>
             </p>
-
         </section>
     </div>
 </div>

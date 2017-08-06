@@ -1,6 +1,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/WEB-INF/view/template/header.jsp" %>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <div class="container-wrapper">
     <div class="container">
@@ -101,9 +102,9 @@
                         <input type="submit" value="Submit Order" class="btn btn-default"
                                name="_eventId_orderConfirmed"/>
 
+                        <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
                     </div>
 
-                    <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
                 </form:form>
             </div>
         </div>
