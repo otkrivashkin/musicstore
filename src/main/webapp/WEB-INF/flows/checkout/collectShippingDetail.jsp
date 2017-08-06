@@ -50,6 +50,7 @@
 
             <input type="submit" value="Next" class="btn btn-default" name="_eventId_shippingDetailCollected" />
 
+            <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
         </form:form>
 
         <!-- FOOTER -->
