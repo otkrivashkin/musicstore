@@ -2,6 +2,16 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/view/template/header.jsp"%>
 
+<script>
+	$(document).ready(function () {
+		var searchCondition = '${searchCondition}';
+		$('.table').DataTable({
+            "lengthMenu": [[1, 2, 3, 5, 10, -1], [1, 2, 3, 5, 10, "All"]],
+            "oSearch": {"sSearch" : searchCondition}
+        });
+    });
+</script>
+
 <div class="container-wrapper">
 	<div class="container">
 		<div class="page-header">
@@ -18,6 +28,7 @@
 					<th>Category</th>
 					<th>Condition</th>
 					<th>Price</th>
+					<th></th>
 				</tr>
 			</thead>
 			<c:forEach items="${products}" var="product">
