@@ -1,6 +1,8 @@
 package com.bin.otkrivashkin.controller.admin;
 
+import com.bin.otkrivashkin.model.Customer;
 import com.bin.otkrivashkin.model.Product;
+import com.bin.otkrivashkin.service.CustomerService;
 import com.bin.otkrivashkin.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ public class AdminHome {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @RequestMapping
     public String adminPage() {
         return "admin";
@@ -30,7 +35,10 @@ public class AdminHome {
 
     @RequestMapping("/customer")
     public String customerManagement(Model model) {
-        // add customer service
+
+        List<Customer> customerList = customerService.getAllCustomers();
+        model.addAttribute("customerList", customerList);
+
         return "customerManagement";
     }
 
